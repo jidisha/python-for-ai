@@ -1,2 +1,5 @@
-print("Hello world!")
-print("This is a simple Python script that prints 'Hello world!' to the console.")
+import requests
+
+# Download a web page
+response = requests.get("https://api.github.com")
+print(response.status_code)  # Should print 200
