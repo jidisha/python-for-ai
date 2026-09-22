@@ -1,11 +1,19 @@
-# import requests
+import requests
 
-# # Download a web page
-# response = requests.get("https://api.github.com")
-# print(response.status_code)  # Should print 200
+# We need coordinates to get weather data
+latitude = 48.85   # Paris latitude
+longitude = 2.35   # Paris longitude
 
-def greet():
-    print("Hello, World!" )
-    print("Hello, Again!" )
+# Build the API URL with our parameters
+url = f"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current=temperature_2m"
 
-greet()    
+# Make the request
+response = requests.get(url)
+data = response.json()
+
+print(data)
+data['current']
+
+temperature = data['current']['temperature_2m']
+print(f"Temperature in Paris: {temperature}°C")
+# Output: Temperature in Paris: 24.4°C
